@@ -1,9 +1,14 @@
 #ifndef TRIPDURATION_H
 #define TRIPDURATION_H
 
-int tripDuration(int tripLength);
-char[] tripDeparture (char[]  departureTime);
-char[] tripArrival (char[]  arrivalTime);
-float totalAirface (float roundTripCost);
+extern int tripLength;
+extern char[] departureTime;
+extern char[] arrivalTime;
+extern float roundTripCost;
+
+int tripDuration();
+char[] tripDeparture ();
+char[] tripArrival ();
+float totalAirfare ();
 
 #endif
