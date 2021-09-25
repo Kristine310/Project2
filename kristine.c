@@ -2,7 +2,7 @@
 #include "kristine.h"
 
 //Find seminar and conference registration fees and add them to the total expenses
-void semConRegistrationFees(double totalExpenses)
+void semConRegistrationFees(float totalExpenses)
 {
     char userInput; 
     int invalid1 = -1;
@@ -12,12 +12,12 @@ void semConRegistrationFees(double totalExpenses)
         scanf("%c", &userInput);
         if (userInput == 'Y' || userInput == 'y')
         {
-            double prices;
+            float prices;
             int invalid2 = -1;
             do
             {
                 printf("Enter the seminar or conference registration fees: ");
-                scanf("%lf", &prices);
+                scanf("%f", &prices);
                 if (prices <= 0)
                 {
                     printf("Invalid fees. Please submit again.");
@@ -42,10 +42,10 @@ void semConRegistrationFees(double totalExpenses)
 }
 
 //Calculate the hotel expenses (company allows $90 per night, extra is payed by employee)
-void hotelExpenses(int tripDays, double totalExpenses, double returnExpenses, double savedExpenses, double allowableExpenses)    
+void hotelExpenses(int tripDays, float totalExpenses, float returnExpenses, float savedExpenses, float allowableExpenses)    
 {
-    double hotelCost; 
-    const double MAX_ALLOWED = 90;
+    float hotelCost; 
+    const float MAX_ALLOWED = 90;
     printf("Hotel Expenses\n");
     for (int i = 0; i < tripDays - 1; i++)
     {
