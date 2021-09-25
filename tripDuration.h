@@ -2,13 +2,13 @@
 #define TRIPDURATION_H
 
 extern int tripLength;
-extern char[] departureTime;
-extern char[] arrivalTime;
+extern char[5] departureTime;
+extern char[5] arrivalTime;
 extern float roundTripCost;
 
 int tripDuration();
-char[] tripDeparture ();
-char[] tripArrival ();
+int tripDeparture();
+int tripArrival();
 float totalAirfare ();
 
 #endif
