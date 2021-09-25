@@ -40,3 +40,39 @@ void semConRegistrationFees(double totalExpenses)
         }
     } while (invalid1 < 0);
 }
+
+//Calculate the hotel expenses (company allows $90 per night, extra is payed by employee)
+void hotelExpenses(int tripDays, double totalExpenses, double returnExpenses, double savedExpenses, double allowableExpenses)    
+{
+    double hotelCost; 
+    const double MAX_ALLOWED = 90;
+    printf("Hotel Expenses\n");
+    for (int i = 0; i < tripDays - 1; i++)
+    {
+        allowableExpenses = allowableExpenses + MAX_ALLOWED;
+        int invalid = -1;
+        do
+        {
+            printf("Enter the cost for night %d (the company allows $90 per night): ", i);
+            scanf("%lf", hotelCost);
+            if (hotelCost > 0)
+            {
+                invalid = 1;
+                totalExpenses = totalExpenses + hotelCost;
+                if (hotelCost > MAX_ALLOWED)
+                {
+                    returnExpenses = returnExpenses + hotelCost;
+                }
+                else
+                {
+                    savedExpenses = savedExpenses + hotelCost;
+                }
+            }
+            else
+            {
+                printf("Invalid price.");
+            }
+        } while (invalid < 0);
+        
+    }
+}
