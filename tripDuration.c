@@ -8,9 +8,10 @@ char departureTime[5];
 char arrivalTime[5];
 float roundTripCost;
 
-int globalHours, globalMinutes;
+int globalDepartureHours, globalDepatureMinutes;
+int globalArrivalHours, globalArrivalMinutes;
 
-int timeValidation(char time[]);
+int timeValidation(char time[], int timeType);
 
 int tripDuration(){
     printf("Please input the number of days the trip lasted, including the day of departure and the day of arrival: ");
@@ -27,7 +28,7 @@ int tripDeparture(){
     printf("Please input the time of departure in military hours with the format hour:minutes \n");
     printf("Departure time: ");
     scanf("%s", departureTime);
-    timeValidation(departureTime);
+    timeValidation(departureTime,1);
     return 0;
 }
 
@@ -35,7 +36,7 @@ int tripArrival(){
     printf("Please input the time of arrival in military hours in the hours:minutes format.\n");
     printf("Arrival time: ");
     scanf("%s", arrivalTime);
-    timeValidation(arrivalTime);
+    timeValidation(arrivalTime,2);
     return 0;
 }
                 
@@ -50,7 +51,7 @@ float totalAirfare(){
     return roundTripCost;
 }
 
-int timeValidation(char time[]){
+int timeValidation(char time[], int timeType){
     int hours, minutes;
     char m[2] = "";
     int timeLength;
@@ -89,8 +90,13 @@ int timeValidation(char time[]){
         goto retype;
     }
 
-    globalHours = hours;
-    globalMinutes = minutes;
+    if(timeType == 1){
+        globalDepartureHours = hours;
+        globalDepatureMinutes = minutes;
+    } else{
+        globalArrivalHours = hours;
+        globalArrivalMinutes = minutes;
+    }
 
     return 0;
 }
@@ -103,7 +109,8 @@ int main(){
     printf("Trip length: %d days\n", tripLength);
     printf("Trip departure time: %s\n", departureTime);
     printf("Trip arrival time: %s\n", arrivalTime);
-    //printf("Hours: %d, minutes: %d\n",globalHours, globalMinutes);
+    //printf("DEPARTURE Hours: %d, minutes: %d\n", globalDepartureHours, globalDepatureMinutes);
+    //printf("ARRIVAL Hours: %d, minutes: %d\n", globalArrivalHours, globalArrivalMinutes);
     printf("Trip roundtrip airfare: $%f\n", roundTripCost);
     return 0;
 }
