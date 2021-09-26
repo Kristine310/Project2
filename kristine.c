@@ -1,15 +1,17 @@
-#include<stdio.h>
 #include "kristine.h"
+#include<stdio.h>
+
+float hotelReturned, hotelSaved, hotelAllowed;
 
 //Find seminar and conference registration fees and add them to the total expenses
-void semConRegistrationFees(float totalExpenses)
+float semConRegistrationFees(float totalExpenses)
 {
     char userInput; 
     int invalid1 = -1;
     do
     {
         printf("Do you have any seminar or conference registration fees? (Y/N)\n");
-        scanf("%c", &userInput);
+        scanf("%s", &userInput);
         if (userInput == 'Y' || userInput == 'y')
         {
             float prices;
@@ -20,7 +22,7 @@ void semConRegistrationFees(float totalExpenses)
                 scanf("%f", &prices);
                 if (prices <= 0)
                 {
-                    printf("Invalid fees. Please submit again.");
+                    printf("Invalid fees. Please submit again.\n");
                 }
                 else
                 {
@@ -39,39 +41,41 @@ void semConRegistrationFees(float totalExpenses)
             printf("Invalid input\n");
         }
     } while (invalid1 < 0);
+    return totalExpenses;
 }
 
 //Calculate the hotel expenses (company allows $90 per night, extra is payed by employee)
-void hotelExpenses(int tripDays, float totalExpenses, float returnExpenses, float savedExpenses, float allowableExpenses)    
+float hotelExpenses(int tripDays, float totalExpenses)    
 {
     float hotelCost; 
     const float MAX_ALLOWED = 90;
-    for (int i = 0; i < tripDays - 1; i++)
+    int i;
+    for (i = 0; i < tripDays - 1; i++)
     {
-        allowableExpenses = allowableExpenses + MAX_ALLOWED;
+        hotelAllowed = hotelAllowed + MAX_ALLOWED;
         int invalid = -1;
         do
         {
             printf("Enter the hotel room cost for night %d (the company allows $90 per night): ", i + 1);
-            scanf("%f", hotelCost);
+            scanf("%f", &hotelCost);
             if (hotelCost > 0)
             {
                 invalid = 1;
                 totalExpenses = totalExpenses + hotelCost;
                 if (hotelCost > MAX_ALLOWED)
                 {
-                    returnExpenses = returnExpenses + (hotelCost - MAX_ALLOWED);
+                    hotelReturned = hotelReturned + (hotelCost - MAX_ALLOWED);
                 }
                 else
                 {
-                    savedExpenses = savedExpenses + hotelCost;
+                    hotelSaved = hotelSaved + hotelCost;
                 }
             }
             else
             {
-                printf("Invalid price.");
+                printf("Invalid price.\n");
             }
-        } while (invalid < 0);
-        
+        } while (invalid < 0); 
     }
+    return totalExpenses;
 }
