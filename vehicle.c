@@ -1,11 +1,8 @@
 #include <stdio.h>
 #include "vehicle1.h"
 
-float vehicleExpense;
-float parkingExpense;
-
 //amount of any car rental 
-void carRental(float totalExpenses) 
+float carRental(float totalExpenses) 
 {   int carRental;
     char response;
     int invalid1 = -1;
@@ -40,48 +37,137 @@ void carRental(float totalExpenses)
             printf("Invalid response");
         }
     } while (invalid1 < 0);
+ return totalExpenses;
 }
 
 // costs miles driven if a private vehicle was used (calculate the vehicle expense as $0.27 per mile driven)
- float costMilesCov(int tripDays, float totalExpenses)
+ float costMiles(int tripDays, float totalExpenses)
  {
-     printf("Enter the total costs of miles driven: ");
-     scanf("%f", &vehicleExpense);
-     float vehicleExpense = 0;
-     vehicleExpense = totalMiles * 0.27;
-      while(vehicleExpense<0){
-        printf("Error: Not a valid input! vehicleExpense cannot be negative.\n Please reenter: ");
-        scanf("%f", &vehicleExpense);
-    }
-     return vehicleExpense;
- }
+     float vehicleExpense;
+     vehicleExpense = milesDriven * 0.27;
+     char response;
+     int invalid1 = -1;
+    do
+    {
+        printf("Did you use a private vehicle (Y/N): ");
+        scanf("%c", response);
+        int invalid2 = -1;
+        if (response == 'Y' || response == 'y')
+        {
+            do
+            {
+            printf("Enter the total costs of miles driven: \n");
+            scanf("%f", &vehicleExpense);
+            if (vehicleExpense > 0)
+            {
+                invalid2 = 1;
+                totalExpenses = totalExpenses + vehicleExpense;
+            }
+            else
+            {
+                printf("Amount is invalid\n");
+            }
+            } while (invalid2 < 0)
+        }
+        else if (response == 'N' || response == 'n')
+        {
+            invalid2 = 1;
+        }
+        else
+        {
+            printf("Invalid response");
+        }
+    } while (invalid1 < 0);
+}
 
 // costs parking (The company allows up to $6 per day. Anything more than this must be paid by the employee.)
- float costParkingCov (int daysSpent)
- {
-     printf("Enter the total amount spent on Parking Fees: \n");
-        scanf("%f", &parkingExpense);
-     float parkingExpense = 0;
-     parkingExpense = daysSpent * 6.00;
-     parkingExpense = totalMiles * 0.27;
-      while(parkingExpense<0){
-        printf("Error: Not a valid input! parkingExpense cannot be negative.\n Please reenter: ");
-        scanf("%f", &parkingExpense);
+void costParking(int tripDays, float totalExpenses, float returnExpenses, float savedExpenses, float allowableExpenses)
+{
+     float parkingExpense; 
+     parkingExpense = tripDays * 6.00;
+     const float costParkAllowed = 6.00;
+     for (int i = 0; i < tripDays; i++)
+     {
+        allowableExpenses = allowableExpenses + costParkAllowed;
+        int notValid = -1;
+        do
+        {
+            printf("Enter the total amount spent on Parking Fees: \n"): ", i);
+            scanf("%f", parkingExpense);
+            if (parkingExpense > 0)
+            {
+                notValid = 1;
+                totalExpenses = totalExpenses + parkingExpense;
+                if (parkingExpense > costParkAllowed)
+                {
+                    returnExpenses = returnExpenses + (parkingExpense - costParkAllowed);
+                }
+                else
+                {
+                    savedExpenses = savedExpenses + parkingExpense;
+                }
+            }
+            else
+            {
+                printf("Invalid price.");
+            }
+        } while (notValid < 0);   
     }
-     return parkingExpense;
- }
+}         
 
 // costs taxi (if a taxi was used anytime during the trip (The company allows up to $10 per day, for each day a taxi was used. Anything more than this must be paid by the employee.) 
- float costTaxisCov(int daysSpent)
- {
-     printf("Enter the total amount spent on Taxi Fees: \n");
-        scanf("%f", &taxiExpense);
-     float taxiExpense = 0;
-     taxiExpense = daysSpent * 10.00;
-     taxiExpense = totalMiles * 0.27;
-      while(taxiExpense<0){
-        printf("Error: Not a valid input! taxiExpense cannot be negative.\n Please reenter: ");
-        scanf("%f", &taxiExpense);
-    }
-     return taxiExpense;
- }
+void costTaxis(int tripDays, float totalExpenses, float returnExpenses, float savedExpenses, float allowableExpenses)
+{ 
+     float taxiExpense;
+     taxiExpense = tripDays * 10.00; 
+     const float costTaxiAllowed = 10.00;
+     char response;
+     int invalid1 = -1;
+    do
+    {
+        printf("Did you use any taxi (Y/N): ");
+        scanf("%c", response);
+        int invalid2 = -1;
+        if (response == 'Y' || response == 'y')
+        {
+             float taxiExpense; 
+             const float costTaxiAllowed = 6;
+             for (int i = 0; i < tripDays; i++)
+             {
+                allowableExpenses = allowableExpenses + costTaxiAllowed;
+                int notValid = -1;
+                do
+                {
+                    printf("Enter the total amount spent on taxi fees: \n"): ", i);
+                    scanf("%f", taxiExpense);
+                    if (taxiExpense > 0)
+                    {
+                        notValid = 1;
+                        totalExpenses = totalExpenses + taxiExpense;
+                        if (taxiExpense > costTaxiAllowed)
+                        {
+                            returnExpenses = returnExpenses + (taxiExpense - costTaxiAllowed);
+                        }
+                        else
+                        {
+                            savedExpenses = savedExpenses + taxiExpense;
+                        }
+                    }
+                    else
+                    {
+                        printf("Invalid price.");
+                    }
+                } while (notValid < 0);
+             }
+        }
+        else if (response == 'N' || response == 'n')
+        {
+            invalid2 = 1;
+        }
+        else
+        {
+            printf("Invalid response");
+        }
+    } while (invalid1 < 0);
+}
+
