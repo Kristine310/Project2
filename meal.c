@@ -220,23 +220,3 @@ float getSavedFoodMoney(){
 
     return savedFoodMoney;
 }
-
-
-
-//DELETE MAIN
-int main(){
-    tripDuration();
-    tripDeparture();
-    tripArrival();
-    
-    getTotalMealCosts();
-    printf("TotalMealCosts: %f\n", totalMealCosts);
-    getMaxMealExpenses();
-    printf("Max meals: %f\n", maximumMealExpenses);
-    getFoodDebtToCompany();
-    printf("Food debt: %f\n", foodDebtToCompany);
-    getSavedFoodMoney();
-    printf("SavedFoodMoney: %f\n", savedFoodMoney);
-    
-    //getMaxMealExpenses();
-}
