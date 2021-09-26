@@ -115,7 +115,7 @@ void costParking(int tripDays, float totalExpenses, float returnExpenses, float 
 
 // costs taxi (if a taxi was used anytime during the trip (The company allows up to $10 per day, for each day a taxi was used. Anything more than this must be paid by the employee.) 
 void costTaxis(int tripDays, float totalExpenses, float returnExpenses, float savedExpenses, float allowableExpenses)
- { 
+{ 
      float taxiExpense;
      const float costTaxiAllowed = 10.00;
      char response;
@@ -154,8 +154,8 @@ void costTaxis(int tripDays, float totalExpenses, float returnExpenses, float sa
                     {
                         printf("Invalid price.");
                     }
-                 } while (notValid < 0);
-            }
+                } while (notValid < 0);
+             }
         }
         else if (response == 'N' || response == 'n')
         {
@@ -166,5 +166,5 @@ void costTaxis(int tripDays, float totalExpenses, float returnExpenses, float sa
             printf("Invalid response");
         }
     } while (invalid1 < 0);
- }
+}
 
