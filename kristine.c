@@ -8,7 +8,7 @@ void semConRegistrationFees(float totalExpenses)
     int invalid1 = -1;
     do
     {
-        printf("Do you have any seminar or conference registration fees? ");
+        printf("Do you have any seminar or conference registration fees? (Y/N)\n");
         scanf("%c", &userInput);
         if (userInput == 'Y' || userInput == 'y')
         {
