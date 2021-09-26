@@ -1,4 +1,5 @@
 #include "tripDuration.h"
+#include "meal1.h"
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
@@ -16,8 +17,8 @@ int timeValidation(char time[], int timeType);
 int tripDuration(){
     printf("Please input the number of days the trip lasted, including the day of departure and the day of arrival: ");
     scanf("%d", &tripLength);
-    while(tripLength<0){
-        printf("Error: Not a valid input! Trip duration cannot be negative.\n");
+    while(tripLength<1){
+        printf("Error: Not a valid input! Trip duration cannot be less than 1 day.\n");
         printf("Please reenter the trip duration in days: ");
         scanf("%d", &tripLength);
     }
@@ -82,7 +83,6 @@ int timeValidation(char time[], int timeType){
     }
 
     minutes = atoi(m);
-    printf("minutes: %d\n", minutes);
     
     if(hours < 0 || hours > 24 || minutes < 0 || minutes > 59 || (hours==24 && minutes>=0)){
         printf("Error: Invalid time range! Please reenter the time in military hours in the hours:minutes format.\n");
