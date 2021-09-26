@@ -8,7 +8,7 @@ char departureTime[5];
 char arrivalTime[5];
 float roundTripCost;
 
-
+int globalHours, globalMinutes;
 
 int timeValidation(char time[]);
 
@@ -35,7 +35,7 @@ int tripArrival(){
     printf("Please input the time of arrival in military hours in the hours:minutes format.\n");
     printf("Arrival time: ");
     scanf("%s", arrivalTime);
-    timeValidation(departureTime);
+    timeValidation(arrivalTime);
     return 0;
 }
                 
@@ -52,8 +52,8 @@ float totalAirfare(){
 
 int timeValidation(char time[]){
     int hours, minutes;
-    char m[2];
-    int timeLength = 0;
+    char m[2] = "";
+    int timeLength;
     int error = 0;
 
     retype:
@@ -88,6 +88,9 @@ int timeValidation(char time[]){
         error = 1;
         goto retype;
     }
+
+    globalHours = hours;
+    globalMinutes = minutes;
 
     return 0;
 }
