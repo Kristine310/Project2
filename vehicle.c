@@ -100,11 +100,11 @@ float costParking(int tripDays, float totalExpenses)
                 totalExpenses = totalExpenses + parkingExpense;
                 if (parkingExpense > parkFeesAllowed)
                 {
-                    returnParkExpenses = returnExpenses + (parkingExpense - parkFeesAllowed);
+                    returnParkExpenses = returnParkExpenses + (parkingExpense - parkFeesAllowed);
                 }
                 else
                 {
-                    savedParkExpenses = savedExpenses + parkingExpense;
+                    savedParkExpenses = savedParkExpenses + parkingExpense;
                 }
             }
             else
