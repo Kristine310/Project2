@@ -25,8 +25,7 @@ int carRental(float totalExpenses)
      float vehicleExpense = 0;
      vehicleExpense = totalMiles * 0.27;
       while(vehicleExpense<0){
-        printf("Error: Not a valid input! Airfare cannot be negative.\n");
-        printf("Please reenter the cost of airfare: ");
+        printf("Error: Not a valid input! vehicleExpense cannot be negative.\n Please reenter: ");
         scanf("%f", &vehicleExpense);
     }
      return vehicleExpense;
