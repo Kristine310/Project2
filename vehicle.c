@@ -38,6 +38,11 @@ int carRental(float totalExpenses)
         scanf("%f", &parkingExpense);
      float parkingExpense = 0;
      parkingExpense = daysSpent * 6.00;
+     parkingExpense = totalMiles * 0.27;
+      while(parkingExpense<0){
+        printf("Error: Not a valid input! vehicleExpense cannot be negative.\n Please reenter: ");
+        scanf("%f", &parkingExpense);
+    }
      return parkingExpense;
  }
 
@@ -48,6 +53,11 @@ int carRental(float totalExpenses)
         scanf("%f", &taxiExpense);
      float taxiExpense = 0;
      taxiExpense = daysSpent * 10.00;
+     taxiExpense = totalMiles * 0.27;
+      while(taxiExpense<0){
+        printf("Error: Not a valid input! vehicleExpense cannot be negative.\n Please reenter: ");
+        scanf("%f", &taxiExpense);
+    }
      return taxiExpense;
  }
 
