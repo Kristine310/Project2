@@ -6,6 +6,6 @@ extern float returnTaxiExpenses, returnParkExpenses, savedTaxiExpenses,savedPark
 float carRental(float totalExpenses)
 float costMiles(int tripDays, float totalExpenses)
 float costParking(int tripDays, float totalExpenses)
-void costTaxis(int tripDays, float totalExpenses)
+float costTaxis(int tripDays, float totalExpenses)
  
  #endif
