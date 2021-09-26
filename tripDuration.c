@@ -100,22 +100,3 @@ int timeValidation(char time[], int timeType){
 
     return 0;
 }
-
-int main(){
-    tripDuration();
-    tripDeparture();
-    tripArrival();
-    totalAirfare();
-    printf("Trip length: %d days\n", tripLength);
-    printf("Trip departure time: %s\n", departureTime);
-    printf("Trip arrival time: %s\n", arrivalTime);
-    //printf("DEPARTURE Hours: %d, minutes: %d\n", globalDepartureHours, globalDepatureMinutes);
-    //printf("ARRIVAL Hours: %d, minutes: %d\n", globalArrivalHours, globalArrivalMinutes);
-    printf("Trip roundtrip airfare: $%f\n", roundTripCost);
-    return 0;
-}
-/*
-cd GIT/Project2
-gcc tripDuration.c -o tripDuration.out
-./tripDuration.out
-*/
