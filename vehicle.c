@@ -2,7 +2,7 @@
 #include "vehicle1.h"
 
 //amount of any car rental 
-void carRental(float totalExpenses) 
+float carRental(float totalExpenses) 
 {   int carRental;
     char response;
     int invalid1 = -1;
@@ -37,6 +37,7 @@ void carRental(float totalExpenses)
             printf("Invalid response");
         }
     } while (invalid1 < 0);
+ return totalExpenses;
 }
 
 // costs miles driven if a private vehicle was used (calculate the vehicle expense as $0.27 per mile driven)
