@@ -46,14 +46,13 @@ void hotelExpenses(int tripDays, float totalExpenses, float returnExpenses, floa
 {
     float hotelCost; 
     const float MAX_ALLOWED = 90;
-    printf("Hotel Expenses\n");
     for (int i = 0; i < tripDays - 1; i++)
     {
         allowableExpenses = allowableExpenses + MAX_ALLOWED;
         int invalid = -1;
         do
         {
-            printf("Enter the cost for night %d (the company allows $90 per night): ", i);
+            printf("Enter the hotel room cost for night %d (the company allows $90 per night): ", i);
             scanf("%lf", hotelCost);
             if (hotelCost > 0)
             {
