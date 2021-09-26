@@ -1,8 +1,11 @@
 #ifndef TRANSPORTATIONEXPENSES_H
 #define TRANSPORTATIONEXPENSES_H
 
-float costTaxisCov(int daysSpent);
-float costParkingCov(int daysSpent);
-float costMilesCov(int totalMiles);
+extern float returnTaxiExpenses, returnParkExpenses, savedTaxiExpenses,savedParkExpenses, costParkAllowed, costTaxiAllowed; 
 
+float carRental(float totalExpenses)
+float costMiles(int tripDays, float totalExpenses)
+float costParking(int tripDays, float totalExpenses)
+void costTaxis(int tripDays, float totalExpenses)
+ 
  #endif
