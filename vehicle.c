@@ -134,7 +134,7 @@ float costTaxis(int tripDays, float totalExpenses)
              const float taxiFeesAllowed = 6;
              for (int i = 0; i < tripDays; i++)
              {
-                costTaxiAllowed = allowableTaxiExpenses + taxiFeesAllowed;
+                costTaxiAllowed = costTaxiAllowed + taxiFeesAllowed;
                 int invalid3 = -1;
                 do
                 {
@@ -157,7 +157,7 @@ float costTaxis(int tripDays, float totalExpenses)
                     {
                         printf("Invalid price.");
                     }
-                } while (notValid < 0);
+                } while (invalid3 < 0);
              }
         }
         else if (response == 'N' || response == 'n')
