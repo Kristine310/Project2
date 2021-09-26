@@ -41,7 +41,7 @@ float carRental(float totalExpenses)
 }
 
 // costs miles driven if a private vehicle was used (calculate the vehicle expense as $0.27 per mile driven)
- float costMilesCov(int tripDays, float totalExpenses)
+ float costMiles(int tripDays, float totalExpenses)
  {
      float vehicleExpense;
      char response;
@@ -80,7 +80,7 @@ float carRental(float totalExpenses)
 }
 
 // costs parking (The company allows up to $6 per day. Anything more than this must be paid by the employee.)
-void costParkingCov (int tripDays, float totalExpenses, float returnExpenses, float savedExpenses, float allowableExpenses)
+void costParking(int tripDays, float totalExpenses, float returnExpenses, float savedExpenses, float allowableExpenses)
 {
      float parkingExpense; 
      const float costParkAllowed = 6.00;
@@ -90,7 +90,7 @@ void costParkingCov (int tripDays, float totalExpenses, float returnExpenses, fl
         int notValid = -1;
         do
         {
-            printf("Enter the total amount spent on Parking Fees: \n company allows up to $6 per day"): ", i);
+            printf("Enter the total amount spent on Parking Fees: \n"): ", i);
             scanf("%f", parkingExpense);
             if (parkingExpense > 0)
             {
@@ -109,14 +109,15 @@ void costParkingCov (int tripDays, float totalExpenses, float returnExpenses, fl
             {
                 printf("Invalid price.");
             }
-        } while (notValid < 0);
-        
+        } while (notValid < 0);   
     }
 }         
 
 // costs taxi (if a taxi was used anytime during the trip (The company allows up to $10 per day, for each day a taxi was used. Anything more than this must be paid by the employee.) 
-void costTaxisCov(int tripDays, float totalExpenses, float returnExpenses, float savedExpenses, float allowableExpenses)
- {   
+void costTaxis(int tripDays, float totalExpenses, float returnExpenses, float savedExpenses, float allowableExpenses)
+ { 
+     float taxiExpense;
+     const float costTaxiAllowed = 10.00;
      char response;
      int invalid1 = -1;
     do
@@ -126,27 +127,27 @@ void costTaxisCov(int tripDays, float totalExpenses, float returnExpenses, float
         int invalid2 = -1;
         if (response == 'Y' || response == 'y')
         {
-             float parkingExpense; 
-             const float costParkAllowed = 6;
+             float taxiExpense; 
+             const float costTaxiAllowed = 6;
              for (int i = 0; i < tripDays; i++)
              {
-                allowableExpenses = allowableExpenses + costParkAllowed;
+                allowableExpenses = allowableExpenses + costTaxiAllowed;
                 int notValid = -1;
                 do
                 {
-                    printf("Enter the total amount spent on Parking Fees: \n company allows up to $6 per day"): ", i);
-                    scanf("%f", parkingExpense);
-                    if (parkingExpense > 0)
+                    printf("Enter the total amount spent on taxi fees: \n"): ", i);
+                    scanf("%f", taxiExpense);
+                    if (taxiExpense > 0)
                     {
                         notValid = 1;
-                        totalExpenses = totalExpenses + parkingExpense;
-                        if (parkingExpense > costParkAllowed)
+                        totalExpenses = totalExpenses + taxiExpense;
+                        if (taxiExpense > costTaxiAllowed)
                         {
-                            returnExpenses = returnExpenses + (parkingExpense - costParkAllowed);
+                            returnExpenses = returnExpenses + (taxiExpense - costTaxiAllowed);
                         }
                         else
                         {
-                            savedExpenses = savedExpenses + parkingExpense;
+                            savedExpenses = savedExpenses + taxiExpense;
                         }
                     }
                     else
