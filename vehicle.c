@@ -44,6 +44,7 @@ float carRental(float totalExpenses)
  float costMiles(int tripDays, float totalExpenses)
  {
      float vehicleExpense;
+     vehicleExpense = milesDriven * 0.27;
      char response;
      int invalid1 = -1;
     do
@@ -83,6 +84,7 @@ float carRental(float totalExpenses)
 void costParking(int tripDays, float totalExpenses, float returnExpenses, float savedExpenses, float allowableExpenses)
 {
      float parkingExpense; 
+     parkingExpense = tripDays * 6.00;
      const float costParkAllowed = 6.00;
      for (int i = 0; i < tripDays; i++)
      {
@@ -117,6 +119,7 @@ void costParking(int tripDays, float totalExpenses, float returnExpenses, float 
 void costTaxis(int tripDays, float totalExpenses, float returnExpenses, float savedExpenses, float allowableExpenses)
 { 
      float taxiExpense;
+     taxiExpense = tripDays * 10.00; 
      const float costTaxiAllowed = 10.00;
      char response;
      int invalid1 = -1;
