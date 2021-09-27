@@ -28,7 +28,7 @@ float carRental(float totalExpenses)
     do
     {
         printf("Did you use a private vehicle (Y/N): ");
-        scanf("%s", response);
+        scanf("%s", &response);
         int invalid2 = -1;
         if (response == 'Y' || response == 'y')
         {
@@ -71,7 +71,7 @@ float costParking(int tripDays, float totalExpenses)
         do
         {
             printf("Enter the total amount spent on Parking Fees: \n");
-            scanf("%s", parkingExpense);
+            scanf("%f", parkingExpense);
             if (parkingExpense > 0)
             {
                 notValid = 1;
@@ -104,7 +104,7 @@ float costTaxis(int tripDays, float totalExpenses)
     do
     {
         printf("Did you use any taxi (Y/N): ");
-        scanf("%s", response);
+        scanf("%s", &response);
         int invalid2 = -1;
         if (response == 'Y' || response == 'y')
         {
