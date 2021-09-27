@@ -26,7 +26,7 @@ float carRental(float totalExpenses)
             {
                 printf("Amount is invalid\n");
             }
-            } while (invalid2 < 0)
+            } while (invalid2 < 0);
         }
         else if (response == 'N' || response == 'n')
         {
@@ -67,7 +67,7 @@ float carRental(float totalExpenses)
             {
                 printf("Amount is invalid\n");
             }
-            } while (invalid2 < 0)
+            } while (invalid2 < 0);
         }
         else if (response == 'N' || response == 'n')
         {
