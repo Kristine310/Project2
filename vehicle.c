@@ -71,7 +71,7 @@ float costParking(int tripDays, float totalExpenses)
         int notValid = -1;
         do
         {
-            printf("Enter the total amount spent on Parking Fees: \n");
+            printf("Enter the amount spent on Parking Fees on day %d: \n", i+1);
             scanf("%f", &parkingExpense);
             if (parkingExpense > 0)
             {
@@ -109,6 +109,7 @@ float costTaxis(int tripDays, float totalExpenses)
         int invalid2 = -1;
         if (response == 'Y' || response == 'y')
         {
+             invalid1 = 1; 
              float taxiExpense; 
              const float taxiFeesAllowed = 6;
              for (int i = 0; i < tripDays; i++)
@@ -117,7 +118,7 @@ float costTaxis(int tripDays, float totalExpenses)
                 int invalid3 = -1;
                 do
                 {
-                    printf("Enter the total amount spent on taxi fees: \n");
+                    printf("Enter the amount spent on taxi fees %d: \n", i+1);
                     scanf("%f", &taxiExpense);
                     if (taxiExpense > 0)
                     {
