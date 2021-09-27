@@ -1,6 +1,13 @@
 #include <stdio.h>
 #include "vehicle1.h"
 
+float returnTaxiExpenses;
+float returnParkExpenses;
+float savedTaxiExpenses;
+float savedParkExpenses;
+float costParkAllowed;
+float costTaxiAllowed;
+
 //amount of any car rental 
 float carRental(float totalExpenses) 
 {   int carRental;
