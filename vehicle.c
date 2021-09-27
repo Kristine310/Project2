@@ -72,7 +72,7 @@ float costParking(int tripDays, float totalExpenses)
         do
         {
             printf("Enter the total amount spent on Parking Fees: \n");
-            scanf("%f", parkingExpense);
+            scanf("%f", &parkingExpense);
             if (parkingExpense > 0)
             {
                 notValid = 1;
@@ -118,7 +118,7 @@ float costTaxis(int tripDays, float totalExpenses)
                 do
                 {
                     printf("Enter the total amount spent on taxi fees: \n");
-                    scanf("%f", taxiExpense);
+                    scanf("%f", &taxiExpense);
                     if (taxiExpense > 0)
                     {
                         invalid3 = 1;
