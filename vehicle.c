@@ -46,10 +46,11 @@ float carRental(float totalExpenses)
                 printf("Amount is invalid\n");
             }
             } while (invalid2 < 0);
+            invalid1= 1;
         }
         else if (response == 'N' || response == 'n')
         {
-            invalid2 = 1;
+            invalid1 = 1;
         }
         else
         {
@@ -89,7 +90,7 @@ float costParking(int tripDays, float totalExpenses)
             {
                 printf("Invalid price.");
             }
-        } while (notValid < 0);   
+        } while (notValid < 0);  
     }
     return totalExpenses;
 }         
@@ -136,6 +137,7 @@ float costTaxis(int tripDays, float totalExpenses)
                         printf("Invalid price.");
                     }
                 } while (invalid3 < 0);
+                 invalid2 = 1; 
              }
         }
         else if (response == 'N' || response == 'n')
