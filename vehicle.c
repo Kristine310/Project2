@@ -9,7 +9,7 @@ float carRental(float totalExpenses)
     do
     {
         printf("Did you purchase a car rental (Y/N): ");
-        scanf("%c", response);
+        scanf("%s", response);
         int invalid2 = -1;
         if (response == 'Y' || response == 'y')
         {
@@ -43,25 +43,25 @@ float carRental(float totalExpenses)
 // costs miles driven if a private vehicle was used (calculate the vehicle expense as $0.27 per mile driven)
  float costMiles(int tripDays, float totalExpenses)
  {
-     float vehicleExpense;
-     vehicleExpense = milesDriven * 0.27;
+     float milesDriven;
+     const float vehicleExpenseMD = 0.27;
      char response;
      int invalid1 = -1;
     do
     {
         printf("Did you use a private vehicle (Y/N): ");
-        scanf("%c", response);
+        scanf("%s", response);
         int invalid2 = -1;
         if (response == 'Y' || response == 'y')
         {
             do
             {
-            printf("Enter the total costs of miles driven: \n");
-            scanf("%f", &vehicleExpense);
-            if (vehicleExpense > 0)
+            printf("Enter the total miles driven: \n");
+            scanf("%f", &milesDriven);
+            if (milesDriven > 0)
             {
                 invalid2 = 1;
-                totalExpenses = totalExpenses + vehicleExpense;
+                totalExpenses = totalExpenses + (milesDriven * vehicleExpenseMD);
             }
             else
             {
@@ -78,33 +78,33 @@ float carRental(float totalExpenses)
             printf("Invalid response");
         }
     } while (invalid1 < 0);
+    return totalExpenses; 
 }
 
 // costs parking (The company allows up to $6 per day. Anything more than this must be paid by the employee.)
-void costParking(int tripDays, float totalExpenses, float returnExpenses, float savedExpenses, float allowableExpenses)
+float costParking(int tripDays, float totalExpenses)
 {
      float parkingExpense; 
-     parkingExpense = tripDays * 6.00;
-     const float costParkAllowed = 6.00;
+     const float parkFeesAllowed = 6.00;
      for (int i = 0; i < tripDays; i++)
      {
-        allowableExpenses = allowableExpenses + costParkAllowed;
+        costParkAllowed = costParkAllowed + parkFeesAllowed;
         int notValid = -1;
         do
         {
-            printf("Enter the total amount spent on Parking Fees: \n"): ", i);
-            scanf("%f", parkingExpense);
+            printf("Enter the total amount spent on Parking Fees: \n");
+            scanf("%s", parkingExpense);
             if (parkingExpense > 0)
             {
                 notValid = 1;
                 totalExpenses = totalExpenses + parkingExpense;
-                if (parkingExpense > costParkAllowed)
+                if (parkingExpense > parkFeesAllowed)
                 {
-                    returnExpenses = returnExpenses + (parkingExpense - costParkAllowed);
+                    returnParkExpenses = returnParkExpenses + (parkingExpense - parkFeesAllowed);
                 }
                 else
                 {
-                    savedExpenses = savedExpenses + parkingExpense;
+                    savedParkExpenses = savedParkExpenses + parkingExpense;
                 }
             }
             else
@@ -113,51 +113,51 @@ void costParking(int tripDays, float totalExpenses, float returnExpenses, float 
             }
         } while (notValid < 0);   
     }
+    return totalExpenses;
 }         
 
 // costs taxi (if a taxi was used anytime during the trip (The company allows up to $10 per day, for each day a taxi was used. Anything more than this must be paid by the employee.) 
-void costTaxis(int tripDays, float totalExpenses, float returnExpenses, float savedExpenses, float allowableExpenses)
+float costTaxis(int tripDays, float totalExpenses)
 { 
      float taxiExpense;
-     taxiExpense = tripDays * 10.00; 
-     const float costTaxiAllowed = 10.00;
+     const float taxiFeesAllowed = 10.00;
      char response;
      int invalid1 = -1;
     do
     {
         printf("Did you use any taxi (Y/N): ");
-        scanf("%c", response);
+        scanf("%s", response);
         int invalid2 = -1;
         if (response == 'Y' || response == 'y')
         {
              float taxiExpense; 
-             const float costTaxiAllowed = 6;
+             const float taxiFeesAllowed = 6;
              for (int i = 0; i < tripDays; i++)
              {
-                allowableExpenses = allowableExpenses + costTaxiAllowed;
-                int notValid = -1;
+                costTaxiAllowed = costTaxiAllowed + taxiFeesAllowed;
+                int invalid3 = -1;
                 do
                 {
-                    printf("Enter the total amount spent on taxi fees: \n"): ", i);
+                    printf("Enter the total amount spent on taxi fees: \n");
                     scanf("%f", taxiExpense);
                     if (taxiExpense > 0)
                     {
-                        notValid = 1;
+                        invalid3 = 1;
                         totalExpenses = totalExpenses + taxiExpense;
                         if (taxiExpense > costTaxiAllowed)
                         {
-                            returnExpenses = returnExpenses + (taxiExpense - costTaxiAllowed);
+                            returnTaxiExpenses = returnTaxiExpenses + (taxiExpense - taxiFeesAllowed);
                         }
                         else
                         {
-                            savedExpenses = savedExpenses + taxiExpense;
+                            savedTaxiExpenses = savedTaxiExpenses + taxiExpense;
                         }
                     }
                     else
                     {
                         printf("Invalid price.");
                     }
-                } while (notValid < 0);
+                } while (invalid3 < 0);
              }
         }
         else if (response == 'N' || response == 'n')
@@ -169,5 +169,6 @@ void costTaxis(int tripDays, float totalExpenses, float returnExpenses, float sa
             printf("Invalid response");
         }
     } while (invalid1 < 0);
+    return totalExpenses;
 }
 
