@@ -1,44 +1,22 @@
 #include <stdio.h>
 #include "vehicle1.h"
 
+float returnTaxiExpenses;
+float returnParkExpenses;
+float savedTaxiExpenses;
+float savedParkExpenses;
+float costParkAllowed;
+float costTaxiAllowed;
+
 //amount of any car rental 
 float carRental(float totalExpenses) 
-{   int carRental;
-    char response;
-    int invalid1 = -1;
-    do
-    {
-        printf("Did you purchase a car rental (Y/N): ");
-        scanf("%s", response);
-        int invalid2 = -1;
-        if (response == 'Y' || response == 'y')
-        {
-            do
-            {
-            printf("Enter the total amount of any car rentals: \n");
-            scanf("%f", &carRental);
-            if (carRental > 0)
-            {
-                invalid2 = 1;
-                totalExpenses = totalExpenses + carRental;
-            }
-            else
-            {
-                printf("Amount is invalid\n");
-            }
-            } while (invalid2 < 0)
-        }
-        else if (response == 'N' || response == 'n')
-        {
-            invalid2 = 1;
-        }
-        else
-        {
-            printf("Invalid response");
-        }
-    } while (invalid1 < 0);
- return totalExpenses;
+{   
+    int carRental;
+    printf("Enter the total amount of any car rentals: \n");
+    scanf("%f", &carRental);
+    totalExpenses = totalExpenses + carRental;
 }
+   
 
 // costs miles driven if a private vehicle was used (calculate the vehicle expense as $0.27 per mile driven)
  float costMiles(int tripDays, float totalExpenses)
@@ -67,7 +45,7 @@ float carRental(float totalExpenses)
             {
                 printf("Amount is invalid\n");
             }
-            } while (invalid2 < 0)
+            } while (invalid2 < 0);
         }
         else if (response == 'N' || response == 'n')
         {
