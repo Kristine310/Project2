@@ -1,9 +1,18 @@
-#ifndef FUNCTIONS_H_INCLUDED
-#define FUNCTIONS_H_INCLUDED
+#ifndef MEAL1_H
+#define MEAL1_H
 
-int breakfastAllowed(int timeDept, int timeArrival, int numDays);
-int lunchAllowed(int timeDept, int timeArrival, int numDays);
-int dinnerAllowed(int timeDept, int timeArrival, int numDays);
-int costAlloted(int timeDept, int timeArrival, int numDays);
+extern int numberOfFirstDayMeals;
+extern int numberOfLastDayMeals;
+extern float totalMealCosts;
+extern float maximumMealExpenses;
+extern float foodDebtToCompany;
+extern float savedFoodMoney;
+
+int getNumOfFirstDayMeals();
+int getNumOfLastDayMeals();
+float getTotalMealCosts();
+float getMaxMealExpenses();
+float getFoodDebtToCompany();
+float getSavedFoodMoney();
 
 #endif
