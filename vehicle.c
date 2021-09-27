@@ -115,14 +115,14 @@ float costTaxis(int tripDays, float totalExpenses)
              for (int i = 0; i < tripDays; i++)
              {
                 costTaxiAllowed = costTaxiAllowed + taxiFeesAllowed;
-                int invalid3 = -1;
+                int invalid2 = -1;
                 do
                 {
                     printf("Enter the amount spent on taxi fees %d: \n", i+1);
                     scanf("%f", &taxiExpense);
                     if (taxiExpense > 0)
                     {
-                        invalid3 = 1;
+                        invalid2 = 1;
                         totalExpenses = totalExpenses + taxiExpense;
                         if (taxiExpense > costTaxiAllowed)
                         {
@@ -137,13 +137,12 @@ float costTaxis(int tripDays, float totalExpenses)
                     {
                         printf("Invalid price.");
                     }
-                } while (invalid3 < 0);
-                 invalid2 = 1; 
+                } while (invalid2 < 0);
              }
         }
         else if (response == 'N' || response == 'n')
         {
-            invalid2 = 1;
+            invalid1 = 1;
         }
         else
         {
